@@ -5,6 +5,7 @@ import { Task } from '../models/task';
   providedIn: 'root',
 })
 export class TaskService {
+  updateTasks: any;
     constructor() {}
 
   private tasks: Array<Task> = [];
@@ -20,10 +21,14 @@ export class TaskService {
   }
 
   addTask(task: Task): void {
+
+    task.id = this.tasks.length + 1;
+
     this.tasks.push(task);
     this.saveToLocalStorage();
   }
 
+  
   updateTask() {
     this.saveToLocalStorage();
   }
